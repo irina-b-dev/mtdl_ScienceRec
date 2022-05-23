@@ -7,26 +7,35 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
-//import com.mysql.cl.jdbc.Driver;
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class App extends Application
+{
+    private static User user;
+    private static databaseDAO db;
+    private static GUIHandler gui;
+
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+    public void start(Stage stage) throws IOException
+    {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 480);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+
+        /*
         try {
            // Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             //DriverManager.registerDriver(new com.);
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bd_tp5",
-                    "root", "root");
+                    "jdbc:mysql://localhost:3306/database",
+                    "root", "andrei");
 
             Statement stmt = conn.createStatement();
             ResultSet rset;
@@ -47,6 +56,7 @@ public class HelloApplication extends Application {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+         */
         launch();
     }
 }
