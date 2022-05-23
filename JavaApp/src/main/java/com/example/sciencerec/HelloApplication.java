@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
-//import com.mysql.cl.jdbc.Driver;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -25,8 +24,8 @@ public class HelloApplication extends Application {
            // Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             //DriverManager.registerDriver(new com.);
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bd_tp5",
-                    "root", "root");
+                    "jdbc:mysql://localhost:3306/database",
+                    "root", "andrei");
 
             Statement stmt = conn.createStatement();
             ResultSet rset;
