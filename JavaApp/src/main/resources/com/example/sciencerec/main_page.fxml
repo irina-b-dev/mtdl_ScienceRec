@@ -5,35 +5,43 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.HelloController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@res/light.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.ArticleLists">
+
    <children>
       <BorderPane layoutX="-14.0" prefHeight="400.0" prefWidth="600.0">
          <top>
             <AnchorPane prefHeight="79.0" prefWidth="600.0" style="-fx-background-color: #aaaaaa;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="39.0" fitWidth="40.0" layoutX="555.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="39.0" fitWidth="40.0" layoutX="570.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@res/pp1.png" />
                      </image>
                   </ImageView>
-                  <AnchorPane layoutX="66.0" layoutY="9.0" prefHeight="30.0" prefWidth="471.0">
+                  <AnchorPane layoutX="80.0" layoutY="9.0" prefHeight="30.0" prefWidth="471.0">
                      <children>
-                        <TextField layoutX="164.0" layoutY="-1.0" prefHeight="30.0" prefWidth="87.0" text="Keywords" />
-                        <TextField layoutX="251.0" layoutY="-1.0" prefHeight="30.0" prefWidth="109.0" text="Author" />
-                        <Button layoutX="429.0" layoutY="2.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="28.0" text="P">
+
+                        <MenuButton layoutX="17.0" layoutY="1.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="117.0" text="Science Field">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="IT" />
+                              <MenuItem mnemonicParsing="false" text="Physics" />
+                           </items>
+                        </MenuButton>
+                        <TextField layoutX="134.0" layoutY="-1.0" prefHeight="35.0" prefWidth="117.0" text="Keywords" />
+                        <TextField layoutX="251.0" layoutY="-1.0" prefHeight="35.0" prefWidth="109.0" text="Author" />
+                        <Button layoutX="429.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" style="-fx-background-radius: 20px;" text="P">
                            <font>
                               <Font name="Bell MT Bold" size="12.0" />
                            </font>
                         </Button>
-                        <ComboBox layoutX="60.0" layoutY="-1.0" prefHeight="30.0" prefWidth="103.0" promptText="Science Field" style="-fx-effect: none;" />
-                        <TextField layoutX="360.0" layoutY="-1.0" prefHeight="30.0" prefWidth="54.0" text="#Pages" />
+                        <TextField layoutX="360.0" layoutY="-1.0" prefHeight="35.0" prefWidth="59.0" text="#Pages" />
+
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="14.0" layoutY="49.0" prefHeight="31.0" prefWidth="609.0" style="-fx-background-color: #999999;">
                      <children>
                         <AnchorPane layoutX="409.0" prefHeight="30.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="86.0" layoutY="7.0" text="Your Lists" />
+                              <Label layoutX="143.0" layoutY="6.0" text="My Lists" />
                            </children>
                         </AnchorPane>
                         <Label layoutX="49.0" layoutY="5.0" text="ScienceRec">
@@ -42,7 +50,7 @@
                            </font>
                         </Label>
                      </children></AnchorPane>
-                  <Button layoutX="14.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" text="E">
+                  <Button layoutX="1.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" style="-fx-background-radius: 20px;" text="E">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -56,15 +64,19 @@
                   <AnchorPane layoutX="13.0" prefHeight="177.0" prefWidth="163.0">
                      <children>
                         <Label layoutX="24.0" layoutY="14.0" text="Sort By" />
-                        <CheckBox layoutX="26.0" layoutY="42.0" mnemonicParsing="false" text="Publication Year" />
-                        <CheckBox layoutX="26.0" layoutY="67.0" mnemonicParsing="false" text="Author Name" />
-                        <CheckBox layoutX="26.0" layoutY="91.0" mnemonicParsing="false" text="Number of Pages" />
-                        <CheckBox layoutX="26.0" layoutY="117.0" mnemonicParsing="false" text="Number of Citations" />
+                        <CheckBox layoutX="15.0" layoutY="42.0" mnemonicParsing="false" style="-fx-background-radius: 20px;" text="Publication Year" />
+                        <CheckBox layoutX="15.0" layoutY="67.0" mnemonicParsing="false" style="-fx-background-radius: 20px;" text="Author Name" />
+                        <CheckBox layoutX="15.0" layoutY="91.0" mnemonicParsing="false" style="-fx-background-radius: 20px;" text="Number of Pages" />
+                        <CheckBox layoutX="15.0" layoutY="117.0" mnemonicParsing="false" style="-fx-background-radius: 20px;" text="Number of Citations" />
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
          </left>
+         <center>
+            <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
       <TextField layoutX="105.0" layoutY="-79.0" prefHeight="30.0" prefWidth="103.0" text="Science Field" />
    </children>
+
 </AnchorPane>
