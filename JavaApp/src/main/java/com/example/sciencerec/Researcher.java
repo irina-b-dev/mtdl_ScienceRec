@@ -14,24 +14,19 @@ public class Researcher extends User
         super(id, type, email, name, photo, hobbies, specialisation, usersettings);
     }
 
-    public boolean addOrEditArticle()
+    public boolean addArticle(Article a)
     {
-        //TODO
-
-        //database implementation
-
-        //returns false if something went wrong
-        return false;
+        return this.getDatabase().createArticle(a);
     }
 
-    public boolean deleteArticle()
+    public boolean editArticle(int articleID, String Title, String[] authors, String[] categories, articleTypes type, String[] keywords, String filepath)
     {
-        //TODO
+        return this.getDatabase().editArticle(articleID, Title, authors, categories, type, keywords, filepath);
+    }
 
-        //database implementation
-
-        //returns false if something went wrong
-        return false;
+    public boolean deleteArticle(int articleID)
+    {
+        return this.getDatabase().deleteArticle(articleID);
     }
 
     private int[] recommendArticles()

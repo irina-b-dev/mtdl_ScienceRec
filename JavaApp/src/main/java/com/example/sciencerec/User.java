@@ -10,7 +10,7 @@ public abstract class User
     private String hobbies;
     private String specialisation;
     private UserSettings usersettings;
-    private static databaseDAO database;
+    private static databaseDAO database = new databaseDAO();;
 
     public User(int id, userTypes type, String email, String name)
     {
@@ -114,8 +114,7 @@ public abstract class User
 
     public String recoverPassword()
     {
-        //TODO
-        return "test";
+        return this.database.getPassword(this.email);
     }
 
     public databaseDAO getDatabase()
