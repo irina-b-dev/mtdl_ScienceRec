@@ -15,22 +15,21 @@ public class Student extends User
         super(id, type, email, name, photo, hobbies, specialisation, usersettings);
     }
 
-    public void addProjectToList(int listID, int articleID)
+    public boolean addProjectToList(int listID, int articleID)
     {
-        //TODO
-        //database implementation
+        return this.getDatabase().addProjectToList(listID, articleID, this.getID());
     }
 
     public Article removeProjectFromList(int listID, int articleID)
     {
-        //TODO
-
-        return null;
+        return this.getDatabase().removeProjectFromList(listID, articleID, this.getID());
     }
 
     public int[] getArticleIDs(int listID)
     {
         //TODO
+
+        //return this.getDatabase().getArticleIDsFromList(listID, this.getID());
 
         return new int[1];
     }

@@ -2,7 +2,12 @@ package com.example.sciencerec;
 
 public class UserSettings
 {
-    private boolean darkMode = false;
+    private boolean darkMode;
+
+    public UserSettings()
+    {
+        this.darkMode = true;
+    }
 
     public boolean getDarkMode()
     {
