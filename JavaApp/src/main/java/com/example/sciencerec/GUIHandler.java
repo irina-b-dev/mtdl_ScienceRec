@@ -10,18 +10,21 @@ import java.util.ArrayList;
 public class GUIHandler
 {
 
-
+    private static GUIHandler guiHandler = new GUIHandler();
     Stage stage;
     FXMLLoader fxmlLoader;
 
     ArrayList<Controller> controllers = new ArrayList<>();
-    public GUIHandler(Stage s) {
-        stage = s;
+    private GUIHandler() {}
 
+    public static GUIHandler guiHandle(){
+        return  guiHandler;
     }
 
-    public void init(){
-        LoginController c = new LoginController(this);
+    public void init(Stage s){
+        System.out.println("is in init");
+        stage = s;
+        LoginController c = new LoginController();
         controllers.add(c);
         this.changeScene(Scenes.LOGIN);
         c.init();
@@ -79,6 +82,9 @@ public class GUIHandler
         }
         stage.setTitle(title);
         stage.setScene(scene);
+        System.out.println("im here 1");
+        stage.show();
+        System.out.println("im here 2");
 
     }
 }
