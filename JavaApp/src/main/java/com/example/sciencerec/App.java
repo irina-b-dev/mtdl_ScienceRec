@@ -12,7 +12,8 @@ import java.io.IOException;
 public class App extends Application
 {
     private static User user;
-    private static databaseDAO db;
+    //for testing purposes
+    private static databaseDAO db = new databaseDAO();
     private static GUIHandler gui;
 
     @Override
@@ -25,35 +26,16 @@ public class App extends Application
 
     public static void main(String[] args)
     {
-
-        /*
-        try {
-           // Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            //DriverManager.registerDriver(new com.);
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/database",
-                    "root", "andrei");
-
-            Statement stmt = conn.createStatement();
-            ResultSet rset;
-
-            String strSelect = "select * from users";
-            System.out.println("The SQL statement is: " + strSelect + "\n"); // Echo For debugging
-
-            rset = stmt.executeQuery(strSelect);
-
-            while(rset.next())
-            {
-                System.out.println("First name is: " + rset.getString("first_name") + " ; Last name is: " + rset.getString("last_name") + " ; Age: " + rset.getString("age"));
-            }
-
-            System.out.println("First name is: ");
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-         */
-        launch();
+        //launch();
+        //System.out.println(db.checkIfUserExists("andrei@yahoo.com","andrei"));
+        //user = db.connectUser("andrei@yahoo.com","andrei");
+        //if(!user.equals(null))
+        //{
+        //    System.out.println(user.getID() + " " + user.getType());
+        //}
+        System.out.println(db.createUser(userTypes.STUDENT, "irina@yahoo.com", "irina"));
+        user = db.connectUser("irina@yahoo.com","irina");
+        System.out.println(user.getID() + " " + user.getType());
+        System.out.println(user.recoverPassword());
     }
 }

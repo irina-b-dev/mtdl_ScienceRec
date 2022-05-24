@@ -14,26 +14,24 @@ public class Teacher extends User
         super(id, type, email, name, photo, hobbies, specialisation, usersettings);
     }
 
-    public boolean addOrEditArticle()
+    public boolean addArticle(Article a)
     {
-        //TODO
-
-
-        return false;
+        return this.getDatabase().createArticle(a);
     }
 
-    public boolean deleteArticle()
+    public boolean editArticle(int articleID, String Title, String[] authors, String[] categories, articleTypes type, String[] keywords, String filepath)
     {
-        //TODO
-
-        return false;
+        return this.getDatabase().editArticle(articleID, Title, authors, categories, type, keywords, filepath);
     }
 
-    public boolean createAccount()
+    public boolean deleteArticle(int articleID)
     {
-        //TODO
+        return this.getDatabase().deleteArticle(articleID);
+    }
 
-        return false;
+    public boolean createAccount(userTypes type, String email, String password)
+    {
+        return this.getDatabase().createUser(type, email, password);
     }
 
     public String exportStudentList()
