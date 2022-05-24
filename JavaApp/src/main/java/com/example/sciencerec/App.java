@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class App extends Application
 {
-    private static User user = new User();
+    private static User user = new User();//so that NULL bs can be avoided
     //for testing purposes
    // private static databaseDAO db = new databaseDAO();
     private static GUIHandler gui;
@@ -23,12 +23,11 @@ public class App extends Application
         System.out.println("is starting app");
         gui = GUIHandler.guiHandle();
         gui.init(stage);
-
     }
 
     public static void main(String[] args)
     {
-        //launch();
+        launch();
         //System.out.println(db.checkIfUserExists("andrei@yahoo.com","andrei"));
         //user = db.connectUser("andrei@yahoo.com","andrei");
         //if(!user.equals(null))
