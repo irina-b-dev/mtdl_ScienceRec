@@ -74,6 +74,7 @@ public class databaseDAO
     public String[] getUserInfo(String email)
     {
         String[] info = new String[7];
+        info[0] = "nouser";
 
         try
         {
@@ -140,18 +141,20 @@ public class databaseDAO
             UserSettings us = new UserSettings();
             us.setDarkMode(Boolean.parseBoolean(details[5]));
 
-            switch(info[1])
+            if(!info[0].equals("nouser"))
             {
-                //and use different constructors if so
-                case "student":
-                    user = new Student(Integer.parseInt(info[0]), userTypes.STUDENT, info[2], details[1], details[2], details[3], details[4], us);
-                    break;
-                case "teacher":
-                    user = new Teacher(Integer.parseInt(info[0]), userTypes.TEACHER, info[2], details[1], details[2], details[3], details[4], us);
-                    break;
-                case "researcher":
-                    user = new Researcher(Integer.parseInt(info[0]), userTypes.RESEARCHER, info[2], details[1], details[2], details[3], details[4], us);
-                    break;
+                switch (info[1]) {
+                    //and use different constructors if so
+                    case "student":
+                        user = new Student(Integer.parseInt(info[0]), userTypes.STUDENT, info[2], details[1], details[2], details[3], details[4], us);
+                        break;
+                    case "teacher":
+                        user = new Teacher(Integer.parseInt(info[0]), userTypes.TEACHER, info[2], details[1], details[2], details[3], details[4], us);
+                        break;
+                    case "researcher":
+                        user = new Researcher(Integer.parseInt(info[0]), userTypes.RESEARCHER, info[2], details[1], details[2], details[3], details[4], us);
+                        break;
+                }
             }
         }
 
@@ -489,7 +492,7 @@ public class databaseDAO
 
         try
         {
-            String strSelect = "select * from account where Type=\'student\';";
+            String strSelect = "select * from account where Type='student';";
             ResultSet rset = stmt.executeQuery(strSelect);
 
             XSSFWorkbook workbook = new XSSFWorkbook();
@@ -497,7 +500,7 @@ public class databaseDAO
 
             writeHeaderLine(sheet);
 
-            writeDataLines(rset, workbook, sheet);
+            writeDataLines(rset, sheet);
 
             FileOutputStream outputStream = new FileOutputStream(path);
             workbook.write(outputStream);
@@ -532,7 +535,7 @@ public class databaseDAO
         headerCell.setCellValue("Password");
     }
 
-    private void writeDataLines(ResultSet rset, XSSFWorkbook workbook, XSSFSheet sheet) throws SQLException
+    private void writeDataLines(ResultSet rset, XSSFSheet sheet) throws SQLException
     {
         int rowCount = 1;
 
@@ -551,7 +554,7 @@ public class databaseDAO
             cell = row.createCell(columnCount++);
             cell.setCellValue(student_email);
 
-            cell = row.createCell(columnCount++);
+            cell = row.createCell(columnCount);
             cell.setCellValue(student_password);
         }
     }
