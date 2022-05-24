@@ -74,6 +74,19 @@ public class GUIHandler
                 title = "your lists";
                 break;
             }
+            case ADD_ARTICLES:
+            {
+                resource = "AddArticles.fxml";
+                title = "add article";
+                break;
+            }
+
+            case VIEW_ARTICLE:{
+                resource = "viewArticle.fxml";
+                title = "view article";
+                break;
+            }
+
             default: {
                 resource = "login.fxml";
                 title = "login";

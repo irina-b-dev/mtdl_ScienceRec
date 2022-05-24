@@ -26,7 +26,7 @@ public class App extends Application
 
     public static void main(String[] args)
     {
-        //launch();
+        launch();
         ArrayList<Article> list = user.getDatabase().searchArticles("c++");
 
         for(Article a: list)

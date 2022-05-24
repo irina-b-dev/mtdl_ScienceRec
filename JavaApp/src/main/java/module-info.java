@@ -13,6 +13,7 @@ module com.example.sciencerec {
     requires org.jfxtras.styles.jmetro;
     requires poi;
     requires poi.ooxml;
+    requires json.simple;
     //requires org.junit.jupiter.api;
     //requires junit;
     opens com.example.sciencerec to javafx.fxml;

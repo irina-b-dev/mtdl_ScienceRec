@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.LoginController">
+   <left>
+      <Button layoutX="23.0" layoutY="704.0" mnemonicParsing="false" text="&lt;Back" />
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="411.0" style="-fx-background-color: #cccccc;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="89.0" layoutY="141.0" prefHeight="30.0" prefWidth="197.0" promptText="username" />
+            <PasswordField layoutX="90.0" layoutY="185.0" prefHeight="30.0" prefWidth="196.0" promptText="password" />
+            <Button fx:id="AddUserButton" depthTest="ENABLE" layoutX="139.0" layoutY="255.0" mnemonicParsing="false" onAction="#onLogInButtonClicked" prefHeight="25.0" prefWidth="97.0" text="Add User" />
+
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

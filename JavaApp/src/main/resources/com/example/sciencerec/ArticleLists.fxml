@@ -16,8 +16,9 @@
             <fx:include source="header.fxml"/>
         </top>
         <left>
+            <fx:include source="BurgerMenu.fxml"/>
             <fx:include source="sidebar.fxml"/>
-
+            <fx:include source="BurgerMenu.fxml"/>
         </left>
      <center>
         <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />

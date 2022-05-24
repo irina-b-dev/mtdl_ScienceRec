@@ -7,6 +7,9 @@ public enum Scenes {
     ARTICLES,
 
     ADD_ARTICLES,
+    ADD_USER,
+
+    VIEW_ARTICLE,
 
     VIEW_PROFILE,
 

@@ -9,10 +9,16 @@ import javafx.util.Pair;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 public class databaseDAO
 {
     private static Connection conn;
     private static Statement stmt;
+
+    JSONObject jsonObject = new JSONObject();
+    JSONArray array = new JSONArray();
 
     public databaseDAO()
     {
@@ -20,7 +26,7 @@ public class databaseDAO
         {
             conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/database",
-                    "root", "andrei");
+                    "root", "root");
             stmt = conn.createStatement();
         }
         catch(Exception e)
