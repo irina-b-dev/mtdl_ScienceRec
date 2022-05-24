@@ -7,6 +7,7 @@
 
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.ViewProfileController">
 
+
     <top>
         <fx:include source="header.fxml" />
     </top>
@@ -39,5 +40,6 @@
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </right>
+
 
 </BorderPane>

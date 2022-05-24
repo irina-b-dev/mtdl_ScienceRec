@@ -3,6 +3,9 @@ package com.example.sciencerec;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.*;
+import java.util.*;
+
+import javafx.util.Pair;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -563,5 +566,103 @@ public class databaseDAO
             cell = row.createCell(columnCount);
             cell.setCellValue(student_password);
         }
+    }
+
+    public ArrayList<Article> searchArticles(String searchy)
+    {
+        String[] s = searchy.split(" ");
+        HashSet<Pair<Article, Integer>> found = new HashSet<>();
+
+        for(String word: s)
+        {
+            word = word.toLowerCase();
+            //check if word appears in title, authors or keywords
+            try
+            {
+                String strSelect = "select * from articles;";
+                ResultSet rset = stmt.executeQuery(strSelect);
+
+                while(rset.next())
+                {
+                    int relevance = 0;
+                    articleTypes t = articleTypes.LICENCE;
+                    switch(rset.getString(5))
+                    {
+                        case "master":
+                            t = articleTypes.MASTER;
+                            break;
+                        case "doctorate":
+                            t = articleTypes.DOCTORATE;
+                            break;
+                        case "national":
+                            t = articleTypes.NATIONAL_RESEARCH;
+                            break;
+                        case "internationa":
+                            t = articleTypes.INTERNATIONAL_RESEARCH;
+                            break;
+                    }
+
+                    if(rset.getString(2).toLowerCase().contains(word))
+                    {
+                        relevance++;
+                    }
+                    if(rset.getString(3).toLowerCase().contains(word))
+                    {
+                        relevance++;
+                    }
+                    if(rset.getString(6).toLowerCase().contains(word))
+                    {
+                        relevance++;
+                    }
+                    if(relevance > 0)
+                    {
+                        found.add(new Pair(new Article(Integer.parseInt(rset.getString(1)), rset.getString(2), rset.getString(3).split(" "),
+                                rset.getString(4).split(" "), t, rset.getString(6).split(" "), rset.getString(7)), relevance));
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println("Oops, something happened: " + e.getMessage());
+            }
+        }
+
+        ArrayList<Pair<Article, Integer>> f = new ArrayList<>(found);
+
+        Comparator<Pair<Article, Integer>> comparator = new Comparator<Pair<Article, Integer>>()
+        {
+            public int compare(Pair<Article, Integer> tupleA,
+                               Pair<Article, Integer> tupleB)
+            {
+                return tupleB.getValue().compareTo(tupleA.getValue());
+            }
+        };
+
+        Collections.sort(f, comparator);
+        ArrayList<Article> anotherone = new ArrayList<>();
+        for(Pair<Article, Integer> x: f)
+        {
+            anotherone.add(x.getKey());
+        }
+
+        return anotherone;
+    }
+
+    public boolean deleteUser(String email)
+    {
+        try
+        {
+            String strInsert = "delete from account where Email="+email+";";
+            PreparedStatement insert = conn.prepareStatement(strInsert);
+            insert.execute();
+
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Oops, something happened: " + e.getMessage());
+        }
+
+        return false;
     }
 }
