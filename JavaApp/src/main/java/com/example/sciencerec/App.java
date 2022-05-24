@@ -8,45 +8,31 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class App extends Application
 {
     private static User user = new User();//so that NULL bs can be avoided
-    //for testing purposes
-   // private static databaseDAO db = new databaseDAO();
     private static GUIHandler gui;
 
     @Override
     public void start(Stage stage) throws IOException
     {
-        System.out.println("is starting app");
+        System.out.println("started");
         gui = GUIHandler.guiHandle();
-        gui.init(stage);
+        gui.init(stage, user);
     }
 
     public static void main(String[] args)
     {
-        launch();
-        //System.out.println(db.checkIfUserExists("andrei@yahoo.com","andrei"));
-        //user = db.connectUser("andrei@yahoo.com","andrei");
-        //if(!user.equals(null))
-        //{
-        //    System.out.println(user.getID() + " " + user.getType());
-        //}
+        //launch();
+        ArrayList<Article> list = user.getDatabase().searchArticles("c++");
 
-        /////////////////////////////////////////////////
-//        System.out.println(db.createUser(userTypes.STUDENT, "irina@yahoo.com", "irina"));
-//        user = db.connectUser("irina@yahoo.com","irina");
-//        System.out.println(user.getID() + " " + user.getType());
-//        System.out.println(user.recoverPassword());
-
-        //testing excel exporting
-        //user = user.getDatabase().connectUser("teacher@yahoo.com", "teacher");
-        //if(user.getType().equals(userTypes.TEACHER))
-        //{
-        //    ((Teacher)user).exportStudentList();
-        //}
-        //it works
+        for(Article a: list)
+        {
+            System.out.println("Found: " + a.getID() + " " + a.getTitle());
+        }
+        System.out.println("done");
     }
 }

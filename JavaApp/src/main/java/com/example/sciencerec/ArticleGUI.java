@@ -13,6 +13,10 @@ public class ArticleGUI {
         Label authors = new Label("authors");
         Label type = new Label("type");
 
+        //use these to set label positions
+        authors.relocate(20,20);
+        type.relocate(40,40);
+
         p.getChildren().addAll(title,authors,type);
 
     }

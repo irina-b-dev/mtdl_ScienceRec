@@ -5,14 +5,14 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller {
-
+public class Controller
+{
     GUIHandler gui  = GUIHandler.guiHandle();
-    public void init(){
+
+    public void init()
+    {
         //gui = GUIHandler.guiHandle();
     }
-
-
 
     public void afterInit(){}
 }
