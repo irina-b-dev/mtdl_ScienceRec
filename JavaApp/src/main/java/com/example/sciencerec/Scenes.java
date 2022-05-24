@@ -4,5 +4,11 @@ public enum Scenes {
     LOGIN,
     LOGOUT,
     MAIN_PAGE,
-    ARTICLES
+    ARTICLES,
+
+    ADD_ARTICLES,
+
+    VIEW_PROFILE,
+
+
 }

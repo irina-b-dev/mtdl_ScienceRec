@@ -10,7 +10,7 @@ module com.example.sciencerec {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
-
+    requires org.jfxtras.styles.jmetro;
     opens com.example.sciencerec to javafx.fxml;
     exports com.example.sciencerec;
 }

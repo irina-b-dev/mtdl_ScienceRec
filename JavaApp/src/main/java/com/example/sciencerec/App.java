@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.*;
 import java.io.IOException;
 
+
 public class App extends Application
 {
     private static User user;

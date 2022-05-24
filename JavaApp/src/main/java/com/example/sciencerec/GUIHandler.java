@@ -3,9 +3,13 @@ package com.example.sciencerec;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jfxtras.styles.jmetro.JMetro;
+import jfxtras.styles.jmetro.Style;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+
 
 public class GUIHandler
 {
@@ -13,9 +17,13 @@ public class GUIHandler
     private static GUIHandler guiHandler = new GUIHandler();
     Stage stage;
     FXMLLoader fxmlLoader;
+    JMetro jMetro;
 
     ArrayList<Controller> controllers = new ArrayList<>();
-    private GUIHandler() {}
+    private GUIHandler() {
+        jMetro = new JMetro(Style.LIGHT);
+
+    }
 
     public static GUIHandler guiHandle(){
         return  guiHandler;
@@ -28,6 +36,7 @@ public class GUIHandler
         controllers.add(c);
         this.changeScene(Scenes.LOGIN);
         c.init();
+
 //         fxmlLoader = new FXMLLoader(App.class.getResource("login.fxml"));
 //        Scene scene = null;
 //        try {
@@ -81,7 +90,10 @@ public class GUIHandler
             throw new RuntimeException(e);
         }
         stage.setTitle(title);
+
+        jMetro.setScene(scene); ///always call before stage.setScene
         stage.setScene(scene);
+
         System.out.println("im here 1");
         stage.show();
         System.out.println("im here 2");
