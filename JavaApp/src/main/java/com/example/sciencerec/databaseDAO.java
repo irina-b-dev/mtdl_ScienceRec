@@ -641,4 +641,22 @@ public class databaseDAO
 
         return anotherone;
     }
+
+    public boolean deleteUser(String email)
+    {
+        try
+        {
+            String strInsert = "delete from account where Email="+email+";";
+            PreparedStatement insert = conn.prepareStatement(strInsert);
+            insert.execute();
+
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Oops, something happened: " + e.getMessage());
+        }
+
+        return false;
+    }
 }

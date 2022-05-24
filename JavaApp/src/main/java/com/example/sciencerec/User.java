@@ -119,6 +119,11 @@ public class User
         return this.database.getPassword(this.email);
     }
 
+    public boolean deleteAccount()
+    {
+        return this.database.deleteUser(this.email);
+    }
+
     public databaseDAO getDatabase()
     {
         return this.database;
