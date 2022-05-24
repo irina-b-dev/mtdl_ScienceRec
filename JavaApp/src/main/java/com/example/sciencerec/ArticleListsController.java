@@ -16,42 +16,36 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ArticleListsController extends Controller {
-
-
+public class ArticleListsController extends Controller
+{
     ArrayList<ArticleGUI> articlesToDisplay = new ArrayList<>();
     @FXML
     MenuButton viewMenuButton;
-
     @FXML
-    ScrollPane scrollRec;
-    public void init(){
+    ScrollPane scrollRec = new ScrollPane();
+
+    public void init()
+    {
         super.init();
 
         System.out.println("initialised main_menu");
-
-
-
     }
 
-
     @FXML
-    public void initialize(){
+    public void initialize()
+    {
         //should be safe to call it here but it isntttttttttttt
         addArticlesToView();
     }
 
-
-
     @Override
-    public void afterInit() {
+    public void afterInit()
+    {
         super.afterInit();
-
     }
 
-
-
-    public void addArticlesToView(){
+    public void addArticlesToView()
+    {
         articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
         articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
         articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
@@ -68,18 +62,21 @@ public class ArticleListsController extends Controller {
     }
 
     @FXML
-    public void onViewMenuClicked(MouseEvent event){
+    public void onViewMenuClicked(MouseEvent event)
+    {
         System.out.println("button clicked view");
        // gui.changeScene(Scenes.MAIN_PAGE);
     }
 
     @FXML
-    public void onViewListClicked(ActionEvent event){
+    public void onViewListClicked(ActionEvent event)
+    {
         System.out.println("button clicked list view");
         // gui.changeScene(Scenes.MAIN_PAGE);
     }
     @FXML
-    public void onViewRecClicked(ActionEvent event){
+    public void onViewRecClicked(ActionEvent event)
+    {
         System.out.println("button clicked rec view");
         // gui.changeScene(Scenes.MAIN_PAGE);
     }

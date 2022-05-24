@@ -7,7 +7,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.LoginController">
    <left>
-      <AnchorPane prefHeight="400.0" prefWidth="221.0" style="-fx-background-color: #bbbbbb;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="400.0" prefWidth="258.0" style="-fx-background-color: #bbbbbb;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="11.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -15,7 +15,7 @@
                   <Image url="@res/atom.png" />
                </image>
             </ImageView>
-            <TextArea layoutX="11.0" layoutY="175.0" opacity="0.57" prefHeight="200.0" prefWidth="200.0" promptText="App" text="ScienceRec">
+            <TextArea editable="false" layoutX="11.0" layoutY="175.0" opacity="0.57" prefHeight="200.0" prefWidth="221.0" promptText="App" text="ScienceRec" wrapText="true">
                <font>
                   <Font size="36.0" />
                </font></TextArea>
@@ -25,8 +25,8 @@
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="411.0" style="-fx-background-color: #cccccc;" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="89.0" layoutY="141.0" prefHeight="30.0" prefWidth="197.0" promptText="username" />
-            <PasswordField layoutX="90.0" layoutY="185.0" prefHeight="30.0" prefWidth="196.0" promptText="password" />
+            <TextField fx:id="email" layoutX="89.0" layoutY="141.0" prefHeight="30.0" prefWidth="197.0" promptText="username" />
+            <PasswordField fx:id="password" layoutX="90.0" layoutY="185.0" prefHeight="30.0" prefWidth="196.0" promptText="password" />
             <Button fx:id="logInButton" depthTest="ENABLE" layoutX="139.0" layoutY="255.0" mnemonicParsing="false" onAction="#onLogInButtonClicked" prefHeight="25.0" prefWidth="97.0" text="Log In" />
 
          </children>

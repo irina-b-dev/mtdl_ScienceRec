@@ -6,6 +6,9 @@
 <?import javafx.scene.text.*?>
 
 <VBox style="-fx-background-color: #aaaaaa;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.ArticleListsController">
+<!--
+<VBox style="-fx-background-color: #aaaaaa;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+-->
     <children>
 
         <BorderPane layoutX="80.0" layoutY="9.0">
