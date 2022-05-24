@@ -3,8 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;"
+            xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.sciencerec.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="221.0" style="-fx-background-color: #bbbbbb;" BorderPane.alignment="CENTER">
          <children>
@@ -14,7 +18,10 @@
                   <Image url="@res/atom.png" />
                </image>
             </ImageView>
-            <TextArea layoutX="11.0" layoutY="175.0" opacity="0.57" prefHeight="200.0" prefWidth="200.0" promptText="App" text="ScienceRec" />
+            <TextArea layoutX="11.0" layoutY="175.0" opacity="0.57" prefHeight="200.0" prefWidth="200.0" promptText="App" text="ScienceRec">
+               <font>
+                  <Font size="36.0" />
+               </font></TextArea>
          </children>
       </AnchorPane>
    </left>
@@ -23,7 +30,7 @@
          <children>
             <TextField layoutX="89.0" layoutY="141.0" prefHeight="30.0" prefWidth="197.0" promptText="username" />
             <TextField layoutX="90.0" layoutY="185.0" prefHeight="30.0" prefWidth="196.0" promptText="password" />
-            <Button depthTest="ENABLE" layoutX="139.0" layoutY="255.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Log In" />
+            <Button fx:id="logInButton" depthTest="ENABLE" layoutX="139.0" layoutY="255.0" mnemonicParsing="false" onAction="#onLogInButtonClicked" prefHeight="25.0" prefWidth="97.0" text="Log In" />
          </children>
       </AnchorPane>
    </center>

@@ -9,36 +9,37 @@ import java.sql.DriverManager;
 import java.sql.*;
 import java.io.IOException;
 
+
 public class App extends Application
 {
     private static User user;
     //for testing purposes
-    private static databaseDAO db = new databaseDAO();
+   // private static databaseDAO db = new databaseDAO();
     private static GUIHandler gui;
 
     @Override
     public void start(Stage stage) throws IOException
     {
+        System.out.println("is starting app");
+        gui = GUIHandler.guiHandle();
+        gui.init(stage);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 480);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
     }
 
     public static void main(String[] args)
     {
-        //launch();
+        launch();
         //System.out.println(db.checkIfUserExists("andrei@yahoo.com","andrei"));
         //user = db.connectUser("andrei@yahoo.com","andrei");
         //if(!user.equals(null))
         //{
         //    System.out.println(user.getID() + " " + user.getType());
         //}
-        System.out.println(db.createUser(userTypes.STUDENT, "irina@yahoo.com", "irina"));
-        user = db.connectUser("irina@yahoo.com","irina");
-        System.out.println(user.getID() + " " + user.getType());
-        System.out.println(user.recoverPassword());
+
+        /////////////////////////////////////////////////
+//        System.out.println(db.createUser(userTypes.STUDENT, "irina@yahoo.com", "irina"));
+//        user = db.connectUser("irina@yahoo.com","irina");
+//        System.out.println(user.getID() + " " + user.getType());
+//        System.out.println(user.recoverPassword());
     }
 }
