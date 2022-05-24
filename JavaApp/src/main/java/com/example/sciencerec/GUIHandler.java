@@ -20,6 +20,7 @@ public class GUIHandler
     JMetro jMetro;
 
     ArrayList<Controller> controllers = new ArrayList<>();
+    Controller currentController;
     private GUIHandler() {
         jMetro = new JMetro(Style.LIGHT);
 
@@ -34,18 +35,9 @@ public class GUIHandler
         stage = s;
         LoginController c = new LoginController();
         controllers.add(c);
+        currentController = c;
         this.changeScene(Scenes.LOGIN);
         c.init();
-
-//         fxmlLoader = new FXMLLoader(App.class.getResource("login.fxml"));
-//        Scene scene = null;
-//        try {
-//            scene = new Scene(fxmlLoader.load(), 600, 480);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        stage.setTitle("Hello!");
-//        stage.setScene(scene);
         stage.show();
     }
     public void changeScene(Scenes s){
@@ -66,6 +58,8 @@ public class GUIHandler
             case MAIN_PAGE: {
                 resource = "main_page.fxml";
                 title = "welcome";
+                currentController = new ArticleListsController();
+
                 break;
             }
             case ARTICLES:
@@ -82,10 +76,11 @@ public class GUIHandler
 
         }
 
+
         fxmlLoader = new FXMLLoader(App.class.getResource(resource));
         Scene scene = null;
         try {
-            scene = new Scene(fxmlLoader.load(), 600, 480);
+            scene = new Scene(fxmlLoader.load(), 1000, 700);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -93,10 +88,11 @@ public class GUIHandler
 
         jMetro.setScene(scene); ///always call before stage.setScene
         stage.setScene(scene);
-
-        System.out.println("im here 1");
         stage.show();
-        System.out.println("im here 2");
+
+        currentController.init();
+        currentController.afterInit();
+
 
     }
 }
