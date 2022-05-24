@@ -5,10 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;"
-            xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.sciencerec.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="221.0" style="-fx-background-color: #bbbbbb;" BorderPane.alignment="CENTER">
          <children>
@@ -29,8 +26,9 @@
       <AnchorPane prefHeight="400.0" prefWidth="411.0" style="-fx-background-color: #cccccc;" BorderPane.alignment="CENTER">
          <children>
             <TextField layoutX="89.0" layoutY="141.0" prefHeight="30.0" prefWidth="197.0" promptText="username" />
-            <TextField layoutX="90.0" layoutY="185.0" prefHeight="30.0" prefWidth="196.0" promptText="password" />
+            <PasswordField layoutX="90.0" layoutY="185.0" prefHeight="30.0" prefWidth="196.0" promptText="password" />
             <Button fx:id="logInButton" depthTest="ENABLE" layoutX="139.0" layoutY="255.0" mnemonicParsing="false" onAction="#onLogInButtonClicked" prefHeight="25.0" prefWidth="97.0" text="Log In" />
+
          </children>
       </AnchorPane>
    </center>
