@@ -42,12 +42,11 @@ public class ArticleListsController extends Controller {
 
         System.out.println("initialised main_menu");
         burger.setVisible(sideMenuState);
-
+        addArticlesToView();
 
     }
 
     @FXML
-
     public void initialize(){}
 
 
@@ -68,7 +67,10 @@ public class ArticleListsController extends Controller {
         for (ArticleGUI a: articlesToDisplay) {
             root.getChildren().add(a.getGraphics());
         }
+        System.out.println("trying to add to scroll view");
         scrollRec.setContent(root);
+        System.out.println("trying to add to scroll view 2");
+
     }
 
     @FXML

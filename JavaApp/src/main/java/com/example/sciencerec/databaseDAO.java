@@ -26,7 +26,7 @@ public class databaseDAO
         {
             conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/database",
-                    "root", "andrei");
+                    "root", "root");
             stmt = conn.createStatement();
         }
         catch(Exception e)
