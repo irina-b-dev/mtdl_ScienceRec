@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class App extends Application
@@ -25,6 +26,13 @@ public class App extends Application
 
     public static void main(String[] args)
     {
-        launch();
+        //launch();
+        ArrayList<Article> list = user.getDatabase().searchArticles("c++");
+
+        for(Article a: list)
+        {
+            System.out.println("Found: " + a.getID() + " " + a.getTitle());
+        }
+        System.out.println("done");
     }
 }
