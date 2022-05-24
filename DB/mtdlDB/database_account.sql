@@ -31,8 +31,9 @@ CREATE TABLE `account` (
   `List2` int(10) unsigned zerofill DEFAULT NULL,
   `List3` int(10) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`AccountID`),
-  UNIQUE KEY `AccountID_UNIQUE` (`AccountID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `AccountID_UNIQUE` (`AccountID`),
+  UNIQUE KEY `Email_UNIQUE` (`Email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +42,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES (1,'student','andrei@yahoo.com','andrei',NULL,NULL,NULL),(2,'student','irina@yahoo.com','irina',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-12 18:10:14
+-- Dump completed on 2022-05-24 11:15:17

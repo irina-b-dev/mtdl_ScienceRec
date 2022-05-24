@@ -23,10 +23,12 @@ DROP TABLE IF EXISTS `articlelist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `articlelist` (
-  `ListID` int NOT NULL,
+  `ListID` int NOT NULL AUTO_INCREMENT,
   `ListName` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`ListID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `userID` int NOT NULL,
+  PRIMARY KEY (`ListID`),
+  UNIQUE KEY `ListID_UNIQUE` (`ListID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +37,7 @@ CREATE TABLE `articlelist` (
 
 LOCK TABLES `articlelist` WRITE;
 /*!40000 ALTER TABLE `articlelist` DISABLE KEYS */;
+INSERT INTO `articlelist` VALUES (1,'da',0);
 /*!40000 ALTER TABLE `articlelist` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-12 18:10:14
+-- Dump completed on 2022-05-24 11:15:17
