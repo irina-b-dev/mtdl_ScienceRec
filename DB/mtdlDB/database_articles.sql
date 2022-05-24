@@ -30,7 +30,8 @@ CREATE TABLE `articles` (
   `Type` varchar(45) NOT NULL,
   `KeyWords` varchar(200) NOT NULL,
   `FilePath` varchar(300) NOT NULL,
-  PRIMARY KEY (`ArticleID`)
+  PRIMARY KEY (`ArticleID`),
+  UNIQUE KEY `Title_UNIQUE` (`Title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-12 18:10:14
+-- Dump completed on 2022-05-24 11:15:17
