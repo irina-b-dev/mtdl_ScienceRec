@@ -1,6 +1,6 @@
 package com.example.sciencerec;
 
-public abstract class User
+public class User
 {
     private int ID;
     private userTypes type;
@@ -10,7 +10,9 @@ public abstract class User
     private String hobbies;
     private String specialisation;
     private UserSettings usersettings;
-    private static databaseDAO database = new databaseDAO();;
+    private static databaseDAO database = new databaseDAO();
+
+    public User(){}
 
     public User(int id, userTypes type, String email, String name)
     {

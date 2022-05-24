@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class App extends Application
 {
-    private static User user;
+    private static User user = new User();
     //for testing purposes
    // private static databaseDAO db = new databaseDAO();
     private static GUIHandler gui;
@@ -28,7 +28,7 @@ public class App extends Application
 
     public static void main(String[] args)
     {
-        launch();
+        //launch();
         //System.out.println(db.checkIfUserExists("andrei@yahoo.com","andrei"));
         //user = db.connectUser("andrei@yahoo.com","andrei");
         //if(!user.equals(null))
@@ -41,5 +41,13 @@ public class App extends Application
 //        user = db.connectUser("irina@yahoo.com","irina");
 //        System.out.println(user.getID() + " " + user.getType());
 //        System.out.println(user.recoverPassword());
+
+        //testing excel exporting
+        //user = user.getDatabase().connectUser("teacher@yahoo.com", "teacher");
+        //if(user.getType().equals(userTypes.TEACHER))
+        //{
+        //    ((Teacher)user).exportStudentList();
+        //}
+        //it works
     }
 }

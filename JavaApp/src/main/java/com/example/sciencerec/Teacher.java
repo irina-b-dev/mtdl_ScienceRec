@@ -34,13 +34,9 @@ public class Teacher extends User
         return this.getDatabase().createUser(type, email, password);
     }
 
-    public String exportStudentList()
+    public boolean exportStudentList()
     {
-        //TODO
-
-        //this should be converted later to an Excel file
-
-        return "test";
+        return this.getDatabase().exportStudentListAsExcel();
     }
 
     public void changeResearchPrivilege(boolean hasPrivilege)

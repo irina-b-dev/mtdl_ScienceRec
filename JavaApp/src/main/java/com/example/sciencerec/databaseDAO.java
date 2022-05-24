@@ -1,6 +1,10 @@
 package com.example.sciencerec;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.*;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.*;
 
 public class databaseDAO
 {
@@ -476,5 +480,79 @@ public class databaseDAO
         }
 
         return false;
+    }
+
+    public boolean exportStudentListAsExcel()
+    {
+        String dateprobably = "_somedate";//should be changed
+        String path = "student_list" + dateprobably + ".xlsx";
+
+        try
+        {
+            String strSelect = "select * from account where Type=\'student\';";
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Reviews");
+
+            writeHeaderLine(sheet);
+
+            writeDataLines(rset, workbook, sheet);
+
+            FileOutputStream outputStream = new FileOutputStream(path);
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+
+            return true;
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Datababse error:" + e.getMessage());
+        }
+        catch(IOException e)
+        {
+            System.out.println("File IO error:" + e.getMessage());
+        }
+
+        return false;
+    }
+
+    private void writeHeaderLine(XSSFSheet sheet)
+    {
+        Row headerRow = sheet.createRow(0);
+
+        Cell headerCell = headerRow.createCell(0);
+        headerCell.setCellValue("ID");
+
+        headerCell = headerRow.createCell(1);
+        headerCell.setCellValue("Email");
+
+        headerCell = headerRow.createCell(2);
+        headerCell.setCellValue("Password");
+    }
+
+    private void writeDataLines(ResultSet rset, XSSFWorkbook workbook, XSSFSheet sheet) throws SQLException
+    {
+        int rowCount = 1;
+
+        while (rset.next())
+        {
+            int student_id = rset.getInt("AccountID");
+            String student_email = rset.getString("Email");
+            String student_password = rset.getString("Password");
+
+            Row row = sheet.createRow(rowCount++);
+
+            int columnCount = 0;
+            Cell cell = row.createCell(columnCount++);
+            cell.setCellValue(student_id);
+
+            cell = row.createCell(columnCount++);
+            cell.setCellValue(student_email);
+
+            cell = row.createCell(columnCount++);
+            cell.setCellValue(student_password);
+        }
     }
 }
