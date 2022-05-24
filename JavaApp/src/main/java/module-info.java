@@ -11,6 +11,10 @@ module com.example.sciencerec {
     requires eu.hansolo.tilesfx;
     requires java.sql;
     requires org.jfxtras.styles.jmetro;
+    requires poi;
+    requires poi.ooxml;
+    //requires org.junit.jupiter.api;
+    //requires junit;
     opens com.example.sciencerec to javafx.fxml;
     exports com.example.sciencerec;
 }
