@@ -8,7 +8,12 @@
             <fx:include source="header.fxml" />
          </top>
          <left>
-            <fx:include source="sidebar.fxml" />
+             <VBox>
+                 <children>
+                <fx:include source="sidebar.fxml" />
+
+                 </children>
+             </VBox>
          </left>
    <center>
        <Pane>
@@ -19,4 +24,7 @@
           </ScrollPane>
        </Pane>
    </center>
+    <bottom>
+
+    </bottom>
       </BorderPane>

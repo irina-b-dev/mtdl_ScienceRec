@@ -11,11 +11,12 @@
         <BorderPane layoutX="80.0" layoutY="9.0">
             <left>
                 <Pane prefHeight="36.0" prefWidth="254.0">
-                    <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" style="-fx-background-radius: 20px;" text="E">
+                  <!---  <Button fx:id="burg" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" style="-fx-background-radius: 20px;" text="E">
                         <font>
                             <Font name="System Bold Italic" size="12.0" />
                         </font>
                     </Button>
+                    -->
                 </Pane>
             </left>
             <center>
@@ -30,7 +31,7 @@
                     <TextField layoutX="134.0" layoutY="-1.0" prefHeight="35.0" prefWidth="117.0" text="Keywords" />
                     <TextField layoutX="251.0" layoutY="-1.0" prefHeight="35.0" prefWidth="109.0" text="Author" />
                     <TextField layoutX="360.0" layoutY="-1.0" prefHeight="35.0" prefWidth="59.0" text="#Pages" />
-                    <Button layoutX="429.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" style="-fx-background-radius: 20px;" text="P">
+                    <Button layoutX="429.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" style="-fx-background-radius: 20px;" text="Search">
                         <font>
                             <Font name="Bell MT Bold" size="12.0" />
                         </font>

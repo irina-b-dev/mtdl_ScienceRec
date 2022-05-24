@@ -6,18 +6,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="321.0" prefWidth="157.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER"
+<AnchorPane prefHeight="601.0" prefWidth="157.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER"
             xmlns="http://javafx.com/javafx/16"
             fx:controller="com.example.sciencerec.ArticleListsController"
             xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <AnchorPane layoutX="13.0" prefHeight="177.0" prefWidth="163.0">
+        <AnchorPane layoutX="13.0" prefHeight="600.0" prefWidth="263.0">
             <children>
                 <Label layoutX="24.0" layoutY="14.0" text="Sort By" />
                 <CheckBox layoutX="15.0" layoutY="42.0" mnemonicParsing="false" style="-fx-background-radius: 20px;" text="Publication Year" />
                 <CheckBox layoutX="15.0" layoutY="67.0" mnemonicParsing="false" style="-fx-background-radius: 20px;" text="Author Name" />
                 <CheckBox layoutX="15.0" layoutY="91.0" mnemonicParsing="false" style="-fx-background-radius: 20px;" text="Number of Pages" />
                 <CheckBox layoutX="15.0" layoutY="117.0" mnemonicParsing="false" style="-fx-background-radius: 20px;" text="Number of Citations" />
+
+                <Pane fx:id="burger" layoutY="500.0">
+                    <fx:include source="BurgerMenu.fxml"/>
+                </Pane>
             </children>
         </AnchorPane>
     </children>

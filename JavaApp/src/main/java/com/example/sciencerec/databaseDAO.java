@@ -6,10 +6,16 @@ import java.sql.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 public class databaseDAO
 {
     private static Connection conn;
     private static Statement stmt;
+
+    JSONObject jsonObject = new JSONObject();
+    JSONArray array = new JSONArray();
 
     public databaseDAO()
     {

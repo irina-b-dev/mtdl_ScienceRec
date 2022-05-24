@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.sciencerec.ViewProfileController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.ViewProfileController">
 
     <top>
-        <fx:include source="header.fxml"/>
+        <fx:include source="header.fxml" />
     </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@res/pp1.png" />
+               </image></ImageView>
+            <Label text="Name" />
+            <Label text="Email" />
+            <Button mnemonicParsing="false" text="Log Out" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets right="50.0" top="50.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backButton" layoutX="14.0" layoutY="294.0" mnemonicParsing="false" text="Back" />
+         </children></Pane>
+   </left>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
 
 </BorderPane>
