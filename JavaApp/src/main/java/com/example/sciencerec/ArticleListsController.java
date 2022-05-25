@@ -25,6 +25,8 @@ public class ArticleListsController extends Controller {
     public Button addUser = new Button();
     public Pane burger = new Pane();
     public Button burg = new Button();
+    public TextField keywordsInput;
+    public TextField authorsInput;
     VBox root = new VBox();
     private boolean sideMenuState = false;
     private static boolean initialised = false;
@@ -164,4 +166,35 @@ public class ArticleListsController extends Controller {
         gui.changeScene(Scenes.ADD_USER);
     }
 
+    public void onSearchClicked(ActionEvent event) {
+        articlesToDisplay.removeAll(articlesToDisplay);
+
+        String keywords = (keywordsInput.getText().replace(",",""));
+        String authors = authorsInput.getText().replace(",","");
+        String searchy = "";
+        if(!keywords.equals("Keywords")){
+            searchy +=keywords;
+        }
+        if(!authors.equals("Authors")) {
+            if(searchy.length() > 0) {
+                searchy += " ";
+            }
+            searchy += authors;
+        }
+
+        ArrayList<Article> arts = App.getUser().getDatabase().searchArticles(searchy);
+        for(Article a : arts){
+            articlesToDisplay.add(new ArticleGUI(a));
+        }
+        root.getChildren().removeAll(root.getChildren());
+        for (ArticleGUI a: articlesToDisplay) {
+            root.getChildren().add(a.getGraphics());
+        }
+        scrollRec.setContent(root);
+        // addArticlesToView();
+        //gui.changeScene(Scenes.ADD_ARTICLES);
+
+        GUIHandler.guiHandle().changeScene(Scenes.MAIN_PAGE);
+
+    }
 }
