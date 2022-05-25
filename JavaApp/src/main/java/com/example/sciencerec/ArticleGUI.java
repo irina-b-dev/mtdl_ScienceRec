@@ -54,6 +54,7 @@ public class ArticleGUI {
         addToListButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                System.out.println("trying to add to list");
                 App.getUser().getDatabase().addProjectToList(1,article.getID(),App.getUser().getID());
             }
         });

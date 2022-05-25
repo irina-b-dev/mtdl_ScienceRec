@@ -231,17 +231,26 @@ public class databaseDAO
         ArrayList<Article> articles = new ArrayList<>();
         try
         {
-            String strSelect = "select * from articlelist where ListID=\'"+listID+"\' and userID=\'"+userID+"\';";
+            String strSelect = "select * from articleinlist where ListID="+listID+";";
             ResultSet rset = stmt.executeQuery(strSelect);
-
-            if(rset.next())
+            System.out.println("SEARCHING");
+            while(rset.next())
             {
-               articles.add(new Article(rset.getInt(1), rset.getString(2), new String[]{rset.getString(3)}, new String[]{rset.getString(4)},articleTypes.LICENCE, new String[]{rset.getString(6)},rset.getString(7)));
+                System.out.println("found something");
+
+                String strSelect2 = "select * from articles where ArticlesID="+rset.getInt(2)+";";
+                ResultSet rset2 = stmt.executeQuery(strSelect2);
+
+                if(rset2.next())
+                {
+                    articles.add(new Article(rset2.getInt(1), rset2.getString(2), new String[]{rset2.getString(3)}, new String[]{rset2.getString(4)},articleTypes.LICENCE, new String[]{rset2.getString(6)},rset2.getString(7)));
+
+                }
             }
         }
         catch(Exception e)
         {
-            System.out.println("Oops, something happened: " + e.getMessage());
+            System.out.println("Oops, something happened(OH NO): " + e.getMessage());
         }
 
         return articles;
@@ -252,7 +261,7 @@ public class databaseDAO
     {
         try
         {
-            String strSelect = "select * from articlelist where ListID=\'"+listID+"\' and userID=\'"+userID+"\';";
+            String strSelect = "select * from articlelist where ListID=\'"+listID+"\';";
             ResultSet rset = stmt.executeQuery(strSelect);
 
             if(rset.next())
@@ -296,7 +305,27 @@ public class databaseDAO
             PreparedStatement insert = conn.prepareStatement(strInsert);
             insert.execute();
 
-            return true;
+            String strSelect = "select * from articlelist where ListName=\'"+listName+"\' and userID=\'"+userID+"\';";
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            if(rset.next())
+            {
+                int listID = rset.getInt(1);
+
+                int p = this.canCreateList(userID);
+                if(p > 0)
+                {
+                    String listname = "List"+p;
+
+                    String strUpdate = "update account set "+listname+"=\'"+listID+"\' where AccountID=\'"+userID+"\';";
+                    PreparedStatement update = conn.prepareStatement(strUpdate);
+                    update.execute();
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
         catch(Exception e)
         {
@@ -310,14 +339,19 @@ public class databaseDAO
     {
         try
         {
-            if(!checkIfListExists(listID, userID))
+            /*
+            if(checkIfListExists(listID, userID))
             {
-               return false;
+                System.out.println("List does not exist");
+                return false;
             }
             if(!checkIfProjectIsInList(listID, articleID))
             {
+                System.out.println("Project is in list already");
                 return false;
             }
+            */
+
             String strInsert = "insert into articleinlist(`ListID`, `ArticleID`) VALUES('" + listID + "', '" + articleID + "');";
             PreparedStatement insert = conn.prepareStatement(strInsert);
             insert.execute();
@@ -326,7 +360,7 @@ public class databaseDAO
         }
         catch(Exception e)
         {
-            System.out.println("Oops, something happened: " + e.getMessage());
+            System.out.println("Oops, something happened(addprojecttolist): " + e.getMessage());
         }
 
         return false;
@@ -782,5 +816,40 @@ public class databaseDAO
         }
 
         return false;
+    }
+
+    public int canCreateList(int userID)
+    {
+        try
+        {
+            String strSelect = "select * from account where AccountID=\'"+userID+"\';";
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            if(rset.next())
+            {
+                System.out.println("0");
+                if(rset.getInt(5) == 0)
+                {
+                    System.out.println("1");
+                    return 1;
+                }
+                if(rset.getInt(6) == 0)
+                {
+                    System.out.println("2");
+                    return 2;
+                }
+                if(rset.getInt(7) == 0)
+                {
+                    System.out.println("3");
+                    return 3;
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Oops, something happened: " + e.getMessage());
+        }
+        System.out.println("0");
+        return 0;
     }
 }

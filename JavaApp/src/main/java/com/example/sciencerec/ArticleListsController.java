@@ -101,6 +101,8 @@ public class ArticleListsController extends Controller {
     public void onViewMenuClicked(MouseEvent event)
     {
         System.out.println("button clicked view");
+
+
        // gui.changeScene(Scenes.MAIN_PAGE);
     }
 
@@ -114,6 +116,7 @@ public class ArticleListsController extends Controller {
         ArrayList<Article> arts = App.getUser().getDatabase().getArticlesInList(1,App.getUser().getID());
         for(Article a : arts){
             articlesToDisplay.add(new ArticleGUI(a));
+            System.out.println("Found: " + a.getTitle());
         }
         root.getChildren().removeAll(root.getChildren());
         for (ArticleGUI a: articlesToDisplay) {

@@ -45,7 +45,14 @@ public class LoginController extends Controller
         if(check != null)
         {
             user = check;
+            if(user.getDatabase().canCreateList(user.getID()) > 0)
+            {
+                App.getUser().getDatabase().createList("FIrst", user.getID());
+                System.out.println("successssss");
+            }
             gui.changeScene(Scenes.MAIN_PAGE);
+
+
         }
         else
         {
