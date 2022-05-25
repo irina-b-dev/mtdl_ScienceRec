@@ -14,6 +14,7 @@ module com.example.sciencerec {
     requires poi;
     requires poi.ooxml;
     requires json.simple;
+    requires java.desktop;
     //requires org.junit.jupiter.api;
     //requires junit;
     opens com.example.sciencerec to javafx.fxml;

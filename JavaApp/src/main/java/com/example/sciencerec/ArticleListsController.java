@@ -6,14 +6,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -42,21 +41,40 @@ public class ArticleListsController extends Controller {
 
         System.out.println("initialised main_menu");
         burger.setVisible(sideMenuState);
-        addArticlesToView();
+
+
+
 
     }
 
     @FXML
-    public void initialize(){}
+    public void initialize(){
 
+        articlesToDisplay = new ArrayList<>();
+        ArrayList<Article> arts = App.getUser().getDatabase().searchArticles("");
+        for(Article a : arts){
+            articlesToDisplay.add(new ArticleGUI(a));
+        }
+
+        addArticlesToView();
+    }
+
+
+    public void setViewingArticles(){
+
+    }
 
 
     public void addArticlesToView()
     {
-        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
-        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
-        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
-        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
+//        ArrayList<Article> arts = App.getUser().getDatabase().searchArticles("");
+//        for(Article a : arts){
+//            articlesToDisplay.add(new ArticleGUI(a));
+//        }
+//        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
+//        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
+//        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
+//        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
 
         VBox root = new VBox();
 
@@ -69,6 +87,8 @@ public class ArticleListsController extends Controller {
         }
         System.out.println("trying to add to scroll view");
         scrollRec.setContent(root);
+        scrollRec.setPrefWidth(600.0);
+        scrollRec.setPrefHeight(500.0);
         System.out.println("trying to add to scroll view 2");
 
     }
@@ -85,12 +105,24 @@ public class ArticleListsController extends Controller {
     {
         System.out.println("button clicked list view");
         // gui.changeScene(Scenes.MAIN_PAGE);
+        articlesToDisplay = new ArrayList<>();
+        ArrayList<Article> arts = App.getUser().getDatabase().getArticlesInList(1,App.getUser().getID());
+        for(Article a : arts){
+            articlesToDisplay.add(new ArticleGUI(a));
+        }
+       // addArticlesToView();
     }
     @FXML
     public void onViewRecClicked(ActionEvent event)
     {
         System.out.println("button clicked rec view");
         // gui.changeScene(Scenes.MAIN_PAGE);
+        articlesToDisplay = new ArrayList<>();
+        ArrayList<Article> arts = App.getUser().getDatabase().searchArticles("");
+        for(Article a : arts){
+            articlesToDisplay.add(new ArticleGUI(a));
+        }
+       // addArticlesToView();
     }
 
     @FXML
