@@ -27,10 +27,11 @@ public class ArticleListsController extends Controller {
     public Button burg = new Button();
     VBox root = new VBox();
     private boolean sideMenuState = false;
+    private static boolean initialised = false;
 
 
 
-    ArrayList<ArticleGUI> articlesToDisplay = new ArrayList<>();
+    private static ArrayList<ArticleGUI> articlesToDisplay = new ArrayList<>();
     @FXML
     MenuButton viewMenuButton;
     @FXML
@@ -38,7 +39,7 @@ public class ArticleListsController extends Controller {
 
     public void init(){
         super.init();
-
+        initialised = true;
         System.out.println("initialised main_menu");
         burger.setVisible(sideMenuState);
 
@@ -67,15 +68,16 @@ public class ArticleListsController extends Controller {
 
     public void addArticlesToView()
     {
-        ArrayList<Article> arts = App.getUser().getDatabase().searchArticles("");
-        for(Article a : arts){
-            articlesToDisplay.add(new ArticleGUI(a));
+        if(!initialised) {
+            ArrayList<Article> arts = App.getUser().getDatabase().searchArticles("");
+            for (Article a : arts) {
+                articlesToDisplay.add(new ArticleGUI(a));
+            }
+            articlesToDisplay.add(new ArticleGUI(new Article(1, "", new String[]{"null"}, null, articleTypes.LICENCE, null, null)));
+            articlesToDisplay.add(new ArticleGUI(new Article(1, "", new String[]{"null"}, null, articleTypes.LICENCE, null, null)));
+            articlesToDisplay.add(new ArticleGUI(new Article(1, "", new String[]{"null"}, null, articleTypes.LICENCE, null, null)));
+            articlesToDisplay.add(new ArticleGUI(new Article(1, "", new String[]{"null"}, null, articleTypes.LICENCE, null, null)));
         }
-        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
-        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
-        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
-        articlesToDisplay.add(new ArticleGUI(new Article(1,"",null,null,null,null,null)));
-
 
 
         root.setSpacing(10);
@@ -111,9 +113,14 @@ public class ArticleListsController extends Controller {
         for(Article a : arts){
             articlesToDisplay.add(new ArticleGUI(a));
         }
+        root.getChildren().removeAll(root.getChildren());
         for (ArticleGUI a: articlesToDisplay) {
             root.getChildren().add(a.getGraphics());
         }
+        scrollRec.setContent(root);
+
+        GUIHandler.guiHandle().changeScene(Scenes.MAIN_PAGE);
+
        // addArticlesToView();
     }
     @FXML
@@ -127,11 +134,15 @@ public class ArticleListsController extends Controller {
         for(Article a : arts){
             articlesToDisplay.add(new ArticleGUI(a));
         }
-
+        root.getChildren().removeAll(root.getChildren());
         for (ArticleGUI a: articlesToDisplay) {
             root.getChildren().add(a.getGraphics());
         }
+        scrollRec.setContent(root);
        // addArticlesToView();
+        //gui.changeScene(Scenes.ADD_ARTICLES);
+
+        GUIHandler.guiHandle().changeScene(Scenes.MAIN_PAGE);
     }
 
     @FXML

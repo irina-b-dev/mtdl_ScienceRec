@@ -28,6 +28,14 @@ public class App extends Application
         return user;
     }
 
+    public static String ArrayToString(String[] ss){
+        String s="";
+        for (String s1 : ss){
+            s += " " +s1;
+        }
+        return s;
+    }
+
     public static void main(String[] args)
     {
         launch();

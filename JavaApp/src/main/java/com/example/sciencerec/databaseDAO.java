@@ -445,8 +445,8 @@ public class databaseDAO
                 }
 
                 String strInsert = "insert into articles(`Title`, `Authors`, `Categories`, `Type`, `KeyWords`, `FilePath`)" +
-                        " VALUES('" + a.getTitle() + "', '" + a.getAuthors().toString() + "', '"+a.getCategories().toString()+"', '"+type+"'" +
-                        ", '"+a.getKeywords().toString()+"', '"+a.getFilepath()+"');";
+                        " VALUES('" + a.getTitle() + "', '" + App.ArrayToString(a.getAuthors()) + "', '"+App.ArrayToString(a.getCategories())+"', '"+type+"'" +
+                        ", '"+App.ArrayToString(a.getKeywords())+"', '"+a.getFilepath()+"');";
                 PreparedStatement insert = conn.prepareStatement(strInsert);
                 insert.execute();
 

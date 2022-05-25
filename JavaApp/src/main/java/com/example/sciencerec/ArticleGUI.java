@@ -1,5 +1,6 @@
 package com.example.sciencerec;
 
+import javafx.css.Style;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -8,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 
 import java.awt.*;
@@ -23,15 +26,30 @@ public class ArticleGUI {
     private Pane p = new Pane();
     ArticleGUI(Article article){
         this.article = article;
+
         Label title = new Label(this.article.getTitle());
-        Label authors = new Label("this.article.getAuthors()[1]");
-        Label type = new Label("type");
+        title.setFont(new Font("Arial", 30));
+        title.setMinHeight(100);
+        Label authors = new Label(App.ArrayToString(this.article.getAuthors()));
+        authors.setLayoutY(150);
+        authors.setMinHeight(100);
+        Label type = new Label(article.getType().toString());
+        type.setLayoutY(250);
+        type.setMinHeight(100);
+
+        Pane pane = new Pane();
+
         Button addToListButton = new Button("+");
+        addToListButton.setTranslateY(30);
+        addToListButton.setTranslateX(450);
+        //addToListButton.setLayoutY(550);
+        addToListButton.setLayoutX(1500);
+        addToListButton.setMinHeight(10);
 
-        HBox hbox = new HBox();
+        VBox hbox = new VBox();
 
-        hbox.setSpacing(10);
-        hbox.setPadding(new Insets(10));
+        hbox.setSpacing(50);
+        hbox.setPadding(new Insets(50));
         hbox.getChildren().addAll(title,authors,type, addToListButton);
         addToListButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
