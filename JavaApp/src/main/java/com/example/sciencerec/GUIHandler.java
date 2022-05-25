@@ -87,6 +87,12 @@ public class GUIHandler
                 break;
             }
 
+            case ADD_USER:{
+                resource = "addUser.fxml";
+                title = "add user";
+                break;
+            }
+
             default: {
                 resource = "login.fxml";
                 title = "login";
