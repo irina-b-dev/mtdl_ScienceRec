@@ -24,6 +24,10 @@ public class App extends Application
         gui.init(stage, user);
     }
 
+    public static User getUser(){
+        return user;
+    }
+
     public static void main(String[] args)
     {
         launch();

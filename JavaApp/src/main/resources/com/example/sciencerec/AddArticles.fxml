@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.sciencerec.AddArticlesController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.AddArticlesController">
 
     <left>
-        <Button layoutX="23.0" layoutY="704.0" mnemonicParsing="false" text="&lt;Back" />
+        <Button layoutX="23.0" layoutY="704.0" mnemonicParsing="false" onAction="#onBackClicked" text="&lt;Back" />
     </left>
     <center>
     <AnchorPane prefHeight="400.0" prefWidth="411.0" style="-fx-background-color: #cccccc;" BorderPane.alignment="CENTER">
         <children>
-            <TextField layoutX="89.0" layoutY="141.0" prefHeight="30.0" prefWidth="197.0" promptText="username" />
-            <PasswordField layoutX="90.0" layoutY="185.0" prefHeight="30.0" prefWidth="196.0" promptText="password" />
-            <Button fx:id="AddUserButton" depthTest="ENABLE" layoutX="139.0" layoutY="255.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="97.0" text="Add User" />
+            <TextField fx:id="typeInput" layoutX="89.0" layoutY="105.0" prefHeight="30.0" prefWidth="197.0" promptText="type" />
+            <TextField fx:id="titleInput" layoutX="89.0" layoutY="141.0" prefHeight="30.0" prefWidth="197.0" promptText="title" />
+            <TextField fx:id="authorsInput" layoutX="89.0" layoutY="175.0" prefHeight="30.0" prefWidth="197.0" promptText="authors" />
+            <TextField fx:id="keywordsInput" layoutX="89.0" layoutY="210.0" prefHeight="30.0" prefWidth="197.0" promptText="keywords" />
+            <Button fx:id="addFileButton" layoutX="236.0" layoutY="250.0" onAction="#onAddFileClicked" text="AddFile" />
+            <Button fx:id="addArticleButton" onAction="#onAddArticleClicked" depthTest="ENABLE" layoutX="139.0" layoutY="316.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Add Article" />
 
         </children>
     </AnchorPane>
-
+    </center>
 </BorderPane>

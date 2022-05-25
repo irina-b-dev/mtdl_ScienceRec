@@ -4,18 +4,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="100.0"  xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.ArticleListsController">
+<AnchorPane prefHeight="100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sciencerec.ArticleListsController">
    <children>
       <HBox prefHeight="100.0" prefWidth="100.0">
          <children>
-            <Button fx:id="addArticle" minWidth="100" mnemonicParsing="false" text="AddArticle">
+            <Button fx:id="addArticle" minWidth="100" mnemonicParsing="false" onAction="#onAddArticleClicked" text="AddArticle">
                <HBox.margin>
                   <Insets top="30.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="addUser" minWidth="100" mnemonicParsing="false" text="AddUser">
+            <Button fx:id="addUser" minWidth="100" mnemonicParsing="false" onAction="#onAddUserClicked" text="AddUser">
                <HBox.margin>
-                  <Insets top="30.0" left="10"/>
+                  <Insets left="10" top="30.0" />
                </HBox.margin>
             </Button>
          </children></HBox>

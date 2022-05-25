@@ -226,6 +226,27 @@ public class databaseDAO
 
         return null;
     }
+    public ArrayList<Article> getArticlesInList(int listID, int userID) {
+
+        ArrayList<Article> articles = new ArrayList<>();
+        try
+        {
+            String strSelect = "select * from articlelist where ListID=\'"+listID+"\' and userID=\'"+userID+"\';";
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            if(rset.next())
+            {
+               articles.add(new Article(rset.getInt(1), rset.getString(2), new String[]{rset.getString(3)}, new String[]{rset.getString(4)},articleTypes.LICENCE, new String[]{rset.getString(6)},rset.getString(7)));
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Oops, something happened: " + e.getMessage());
+        }
+
+        return articles;
+    }
+
 
     public boolean checkIfListExists(int listID, int userID)
     {
